@@ -62,6 +62,11 @@ class TareaController extends Controller
             'fecha_recordatorio' => $this->request->getPost('fecha_recordatorio'),
             'color' => $this->request->getPost('color'),
         ]);
+        // ✅ Flashdata para mostrar en modal
+        session()->setFlashdata('modal_msg', [
+            'titulo' => 'Tarea creada',
+            'mensaje' => 'La tarea fue creada exitosamente.'
+        ]);
 
         return redirect()->to('/tareas/listar');
     }
@@ -91,6 +96,12 @@ class TareaController extends Controller
             'fecha_vencimiento' => $this->request->getPost('fecha_vencimiento'),
             'fecha_recordatorio' => $this->request->getPost('fecha_recordatorio'),
             'color' => $this->request->getPost('color'),
+        ]);
+
+        // ✅ Flashdata para mostrar en modal
+        session()->setFlashdata('modal_msg', [
+            'titulo' => 'Modificación exitosa de la tarea',
+            'mensaje' => 'Los cambios fueron guardados correctamente.'
         ]);
 
         return redirect()->to(base_url('tareas/listar'));
@@ -350,11 +361,7 @@ class TareaController extends Controller
             $tareaModel->update($id_tarea, ['estado' => $nuevoEstadoTarea]);
             //  FIN BLOQUE
 
-        // Guardar mensaje para el modal
-            /* session()->setFlashdata('mensaje_tarea_asignada', [
-                'descripcion' => $subtarea['descripcion'],
-                'email' => $colaborador['email_colaborador']
-            ]); */
+        
             // ✅ Flashdata para mostrar en modal
             session()->setFlashdata('modal_msg', [
                 'titulo' => 'Subtarea asignada',
@@ -419,10 +426,15 @@ class TareaController extends Controller
 
             //Eliminar tarea archivada
             $db->table('archivadas')->where('id', $id)->delete();
-            return redirect()->to(base_url('tareas/archivadas'))->with('success', 'Tarea restaurada con éxito.');
+            // ✅ Flashdata para mostrar en modal
+            session()->setFlashdata('modal_msg', [
+                'titulo' => 'Restauración exitosa de la tarea',
+                'mensaje' => 'La tarea fue restaurada correctamente.'
+            ]);
+            return redirect()->to(base_url('tareas/archivadas'));
         }else {
 
-        return redirect()->to(base_url('/tareas/archivadas'))->with('error', 'Tarea no encontrada.');
+        return redirect()->to(base_url('/tareas/archivadas'));
         }
     }
 

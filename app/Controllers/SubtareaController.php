@@ -50,7 +50,11 @@ class SubtareaController extends Controller
             'comentario' => $this->request->getPost('comentario'),
             'id_responsable' => null // Responsable por defecto
         ]);
-
+        // ✅ Flashdata para mostrar en modal
+        session()->setFlashdata('modal_msg', [
+            'titulo' => 'Subtarea creada',
+            'mensaje' => 'La subtarea fue registrada correctamente.'
+        ]);
         return redirect()->to('tareas/listar');
     }
 
@@ -89,6 +93,12 @@ class SubtareaController extends Controller
 
         $subtarea = $model->find($id);
         $idTarea = $subtarea['id_tarea'];
+        
+        // ✅ Flashdata para mostrar en modal
+        session()->setFlashdata('modal_msg', [
+            'titulo' => 'Modificación exitosa de la subtarea',
+            'mensaje' => 'Los cambios fueron guardados correctamente.'
+        ]);
 
         return redirect()->to('/subtareas/listar/'. $idTarea); // o al detalle de la tarea
     }

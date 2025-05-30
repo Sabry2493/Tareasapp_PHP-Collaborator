@@ -20,7 +20,7 @@
     </script>
 <?php endif; ?>
 
-<div class="container mt-4">
+<div class="container my-4">
     <h2 class="text-center mb-4">Lista de Tareas</h2>
     <div class="d-flex justify-content-between mb-3">
         <a href="<?= base_url('tareas/crear') ?>" class="btn btn-primary">Crear nueva tarea</a> 
@@ -84,7 +84,7 @@
     </form>
      <?php if (empty($tareas)): ?>
         <div class="alert alert-warning text-center">⚠️ No se encontraron tareas con los filtros aplicados.</div>
-    <?php else: ?>
+     <?php else: ?>
             <table class="table table-bordered table-striped align-middle">
                 <thead  class="table-dark text-center">
                     <tr>
@@ -119,7 +119,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
+        
     <?php endif; ?>
 </div>
 <?= view('partials/footer') ?>
