@@ -64,10 +64,12 @@
             <img src="<?= base_url('/img/logo3.png') ?>" alt="Logo" width="58" height="53" class="me-2">
             <p id="titulonav" class="mb-0 fs-4">PHP Collaborator</p>
         </a>
-        <div class="ms-auto">
+        <div class="ms-auto d-flex align-items-center gap-3">
             <?php if (session()->get('id')): ?> 
+                <span class="fw-bold text-dark">Bienvenido, <?= esc(session()->get('nombre_usuario')) ?></span>
                 <a href="<?= base_url('/usuarios/logout') ?>" class="btn btn-sm btn-logout">Cerrar sesión</a>
             <?php elseif (session()->get('id_colaborador')): ?>
+                <span class="fw-bold text-dark">Bienvenido, <?= esc(session()->get('nombre_colaborador')) ?></span>
                 <a href="<?= base_url('/colaboradores/logout') ?>" class="btn btn-sm btn-logout">Cerrar sesión</a>
             <?php endif; ?>
         </div>
