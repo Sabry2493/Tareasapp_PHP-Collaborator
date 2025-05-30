@@ -351,10 +351,16 @@ class TareaController extends Controller
             //  FIN BLOQUE
 
         // Guardar mensaje para el modal
-            session()->setFlashdata('mensaje_tarea_asignada', [
+            /* session()->setFlashdata('mensaje_tarea_asignada', [
                 'descripcion' => $subtarea['descripcion'],
                 'email' => $colaborador['email_colaborador']
+            ]); */
+            // ✅ Flashdata para mostrar en modal
+            session()->setFlashdata('modal_msg', [
+                'titulo' => 'Subtarea asignada',
+                'mensaje' => 'Se asignó la subtarea <strong>' . esc($subtarea['descripcion']) . '</strong> al colaborador <strong>' . esc($colaborador['email_colaborador']) . '</strong>.'
             ]);
+        
         return redirect()->to('/tareas/mostrarCompartir/' . $id_tarea); 
     }
 

@@ -13,51 +13,39 @@
 <!-- Bootstrap JS (para funcionalidades como modales) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!--MODAL EXITO-->
-<?php if (session()->getFlashdata('mensaje') && session()->getFlashdata('tipo')): 
-    $mensaje = session()->getFlashdata('mensaje');
-    $tipo = session()->getFlashdata('tipo');
+<?php if (session()->getFlashdata('modal_msg')): 
+    $msg = session()->getFlashdata('modal_msg');
+?> 
 
-    // Elegir color y título del modal según el tipo
-    switch ($tipo) {
-        case 'alta':
-            $color = 'bg-success text-white';
-            $titulo = '¡Éxito!';
-            break;
-        case 'modificacion':
-            $color = 'bg-warning text-dark';
-            $titulo = 'Modificación';
-            break;
-        case 'baja':
-            $color = 'bg-danger text-white';
-            $titulo = 'Baja realizada';
-            break;
-        default:
-            $color = 'bg-secondary text-white';
-            $titulo = 'Mensaje';
-            break;
-    }
-?>
-  <!--Modal Bootstrap-->
-  <div class="modal fade" id="modalMensaje" tabindex="-1" aria-labelledby="modalMensajeLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content <?= $color ?>">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalMensajeLabel"><?= $titulo ?></h5>
-          <button type="button" class="btn-close <?php if ($tipo !== 'modificacion') echo 'btn-close-white'; ?>" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <?= $mensaje ?>
-        </div>
+<!-- Modal Bootstrap reutilizable -->
+<div class="modal fade" id="modalGeneral" tabindex="-1" aria-labelledby="modalGeneralLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalGeneralLabel"><?= esc($msg['titulo'] ?? 'Mensaje') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
+
+      <div class="modal-body">
+        <p><?= $msg['mensaje'] ?></p> <!-- NO usamos esc() porque el mensaje ya contiene etiquetas HTML -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+
     </div>
   </div>
+</div>
 
-  <script>
-    const modal = new bootstrap.Modal(document.getElementById('modalMensaje'));
-    window.addEventListener('load', () => {
-      modal.show();
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var modal = new bootstrap.Modal(document.getElementById('modalGeneral'));
+        modal.show();
     });
-  </script>
+</script>
+
 <?php endif; ?>
 <!--Fin del modal-->
 </body>

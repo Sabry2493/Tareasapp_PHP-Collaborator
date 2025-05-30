@@ -1,37 +1,54 @@
 <?= view('partials/header') ?>
-<h2>Editar Tarea</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">Editar Tarea</h2>
 
-<form method="post" action="<?= base_url('tareas/actualizar/' . $tarea['id']) ?>">
-    <label>Asunto:</label><br>
-    <input type="text" name="asunto" value="<?= esc($tarea['asunto']) ?>"><br>
+    <form method="post" action="<?= base_url('tareas/actualizar/' . $tarea['id']) ?>" class="bg-light p-4 rounded shadow-sm">
+        <div class="mb-3">
+            <label for="asunto" class="form-label">Asunto:</label>
+            <input id="asunto" type="text" name="asunto" value="<?= esc($tarea['asunto']) ?>" class="form-control">
+        </div>
 
-    <label>Descripción:</label><br>
-    <textarea name="descripcion"><?= esc($tarea['descripcion']) ?></textarea><br>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" class="form-control" rows="4"><?= esc($tarea['descripcion']) ?></textarea>
+        </div>
 
-    <label>Prioridad:</label><br>
-    <select name="prioridad">
-        <option value="Baja" <?= $tarea['prioridad'] === 'Baja' ? 'selected' : '' ?>>Baja</option>
-        <option value="Normal" <?= $tarea['prioridad'] === 'Normal' ? 'selected' : '' ?>>Normal</option>
-        <option value="Alta" <?= $tarea['prioridad'] === 'Alta' ? 'selected' : '' ?>>Alta</option>
-    </select><br>
+        <div class="mb-3">
+            <label for="prioridad" class="form-label">Prioridad:</label>
+            <select id="prioridad" name="prioridad" class="form-select">
+                <option value="Baja" <?= $tarea['prioridad'] === 'Baja' ? 'selected' : '' ?>>Baja</option>
+                <option value="Normal" <?= $tarea['prioridad'] === 'Normal' ? 'selected' : '' ?>>Normal</option>
+                <option value="Alta" <?= $tarea['prioridad'] === 'Alta' ? 'selected' : '' ?>>Alta</option>
+            </select>
+        </div>
 
-    <label>Estado:</label><br>
-    <select name="estado">
-        <option value="Definida" <?= $tarea['estado'] === 'Definida' ? 'selected' : '' ?>>Definida</option>
-        <option value="En proceso" <?= $tarea['estado'] === 'En proceso' ? 'selected' : '' ?>>En proceso</option>
-        <option value="Completada" <?= $tarea['estado'] === 'Completada' ? 'selected' : '' ?>>Completada</option>
-    </select><br>
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado:</label>
+            <select id="estado" name="estado" class="form-select">
+                <option value="Definida" <?= $tarea['estado'] === 'Definida' ? 'selected' : '' ?>>Definida</option>
+                <option value="En proceso" <?= $tarea['estado'] === 'En proceso' ? 'selected' : '' ?>>En proceso</option>
+                <option value="Completada" <?= $tarea['estado'] === 'Completada' ? 'selected' : '' ?>>Completada</option>
+            </select>
+        </div>
 
-    <label>Fecha Vencimiento:</label><br>
-    <input type="date" name="fecha_vencimiento" value="<?= $tarea['fecha_vencimiento'] ?>"><br>
+        <div class="mb-3">
+            <label for="fecha_vencimiento" class="form-label">Fecha Vencimiento:</label>
+            <input id="fecha_vencimiento" class="form-control" type="date" name="fecha_vencimiento" value="<?= $tarea['fecha_vencimiento'] ?>">
+        </div>
 
-    <label>Fecha Recordatorio:</label><br>
-    <input type="date" name="fecha_recordatorio" value="<?= $tarea['fecha_recordatorio'] ?>"><br>
+        <div class="mb-3">
+            <label for="fecha_recordatorio" class="form-label">Fecha Recordatorio:</label>
+            <input id="fecha_recordatorio" class="form-control" type="date" name="fecha_recordatorio" value="<?= $tarea['fecha_recordatorio'] ?>">
+        </div>
 
-    <label>Color:</label><br>
-    <input type="color" name="color" value="<?= $tarea['color'] ?>"><br><br>
-
-    <button type="submit">Actualizar</button>
-</form>
-<a href="<?= base_url('tareas/listar') ?>">Volver a Tareas</a>
+        <div class="mb-3">
+            <label for="color" class="form-label">Color:</label>
+            <input id="color" class="form-control" type="color" name="color" value="<?= $tarea['color'] ?>">
+        </div>
+        <div class="d-flex justify-content-between">
+            <a href="<?= base_url('tareas/listar') ?>" class="btn btn-secondary">Volver</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+    </form>
+</div>
 <?= view('partials/footer') ?>
