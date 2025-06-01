@@ -13,14 +13,17 @@
     <style>
          @import url('https://fonts.googleapis.com/css2?family=Goldman&family=Genos:ital,wght@0,100..900;1,100..900&display=swap');
 
-        html, body {
-            height: 100%;
+        html,body {
+            height: auto;
             margin: 0;
             padding: 0;
+            background-color:rgb(248, 237, 215); /* marrón claro */
+            background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(216, 197, 102));
+            
         }
-        body {
-            background-color:rgb(243, 241, 238); /* marrón claro */
-            font-family: 'Segoe UI', sans-serif;
+        body { 
+            /* background: linear-gradient(to bottom, rgb(236, 235, 225), rgba(194, 175, 67, 0.88));
+            background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(216, 199, 114), rgb(151, 149, 149)); */
             font-family: "Genos", sans-serif;
         }
         .navbar {
@@ -52,6 +55,12 @@
         }
         #terminos{
             font-size:1.2rem;
+        }
+        table{
+            box-shadow: -1px 1px 4px 6px rgba(116, 92, 41, 0.2);
+        }
+        #formcm{
+            box-shadow: -1px 1px 4px 6px rgba(116, 92, 41, 0.2);
         }
     </style>
 </head>

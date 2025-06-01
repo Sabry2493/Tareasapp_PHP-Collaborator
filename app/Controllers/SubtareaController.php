@@ -40,9 +40,11 @@ class SubtareaController extends Controller
             return redirect()->to('/usuarios/login');
         }        
 
+        $idTarea = $this->request->getPost('id_tarea');
+
         $model = new SubtareaModel();
         $model->save([
-            'id_tarea' => $this->request->getPost('id_tarea'),
+            'id_tarea' => $idTarea,
             'descripcion' => $this->request->getPost('descripcion'),
             'estado' => 'En proceso', // Estado por defecto
             'prioridad' => $this->request->getPost('prioridad'),
@@ -50,12 +52,14 @@ class SubtareaController extends Controller
             'comentario' => $this->request->getPost('comentario'),
             'id_responsable' => null // Responsable por defecto
         ]);
+
+
         // ✅ Flashdata para mostrar en modal
         session()->setFlashdata('modal_msg', [
             'titulo' => 'Subtarea creada',
             'mensaje' => 'La subtarea fue registrada correctamente.'
         ]);
-        return redirect()->to('tareas/listar');
+        return redirect()->to('/subtareas/listar/'. $idTarea);
     }
 
     //modificacion

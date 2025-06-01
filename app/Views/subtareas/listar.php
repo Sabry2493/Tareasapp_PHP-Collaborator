@@ -1,5 +1,5 @@
 <?= view('partials/header') ?>
-<div class="container my-4">
+<div class="container my-4" >
     <h2 class="text-center mb-4">Subtareas de la Tarea #<?= esc($id_tarea) ?></h2>
     <div class="d-flex justify-content-between mb-3">
         <a href="<?= base_url('subtareas/crear/'.$id_tarea) ?>" class="btn btn-primary">Crear Nueva Subtarea</a>
@@ -30,7 +30,7 @@
         <?php if (empty($subtareas)): ?>
             <div class="alert alert-warning text-center">⚠️ No se encontraron subtareas con los filtros aplicados.</div>
         <?php else: ?>
-            <table class="table table-bordered table-striped align-middle">
+            <table class="table table-bordered table-striped align-middle" >
                 <thead class="table-dark text-center">
                     <tr>
                         <th>ID</th>

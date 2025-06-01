@@ -1,8 +1,8 @@
 <?= view('partials/header') ?>
-<div class="container mt-4">
+<div class="container my-4">
     <h2 class="mb-4">Crear Subtarea</h2>
 
-    <form method="post" action="<?= base_url('subtareas/guardar') ?>" class="bg-light p-4 rounded shadow-sm">
+    <form method="post" action="<?= base_url('subtareas/guardar') ?>" class="bg-light p-4 rounded" id="formcm">
         
         <input type="hidden" name="id_tarea" value="<?= esc($id_tarea) ?>">
         <div class="mb-3">
@@ -34,7 +34,7 @@
         <!-- <label>ID Responsable:</label><br>
         <input type="number" name="id_responsable" min="1"><br><br> -->
         <div class="d-flex justify-content-between">
-            <a href="<?= base_url('tareas/listar') ?>" class="btn btn-secondary">Volver</a> 
+            <a href="<?= base_url('subtareas/listar/' . $id_tarea) ?>" class="btn btn-secondary">Volver a subtareas</a> 
             <button type="submit" class="btn btn-primary">Guardar Subtarea</button>
         </div>
     </form>

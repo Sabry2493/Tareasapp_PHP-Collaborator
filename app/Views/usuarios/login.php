@@ -35,7 +35,7 @@
         <!-- Columna de la imagen -->
         <div class="col-md-6 d-flex justify-content-center align-items-center p-0" 
             style="background: linear-gradient(to top, rgb(33, 37, 41),rgb(0, 0, 0));
-                    height: 100%; min-height: 70vh;">
+                    height: auto; min-height: 70vh;">
             <img src="<?= base_url('img/creando.jpg') ?>" alt="Imagen login" class="img-fluid" style="max-height: 100vh;opacity:0.9;">
         </div>
     </div>

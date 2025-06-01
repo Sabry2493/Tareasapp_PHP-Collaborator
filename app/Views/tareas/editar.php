@@ -1,11 +1,11 @@
 <?= view('partials/header') ?>
-<div class="container mt-4">
+<div class="container my-4">
     <h2 class="mb-4">Editar Tarea</h2>
 
-    <form method="post" action="<?= base_url('tareas/actualizar/' . $tarea['id']) ?>" class="bg-light p-4 rounded shadow-sm">
+    <form method="post" action="<?= base_url('tareas/actualizar/' . $tarea['id']) ?>" id="formcm" class="bg-light p-4 rounded">
         <div class="mb-3">
             <label for="asunto" class="form-label">Asunto:</label>
-            <input id="asunto" type="text" name="asunto" value="<?= esc($tarea['asunto']) ?>" class="form-control">
+            <input id="asunto" class="form-control" type="text" name="asunto" value="<?= esc($tarea['asunto']) ?>" >
         </div>
 
         <div class="mb-3">
@@ -46,7 +46,7 @@
             <input id="color" class="form-control" type="color" name="color" value="<?= $tarea['color'] ?>">
         </div>
         <div class="d-flex justify-content-between">
-            <a href="<?= base_url('tareas/listar') ?>" class="btn btn-secondary">Volver</a>
+            <a href="<?= base_url('tareas/listar') ?>" class="btn btn-secondary">Volver a tareas</a>
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </div>
     </form>

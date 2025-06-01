@@ -1,8 +1,8 @@
 <?= view('partials/header') ?>
-<div class="container mt-4">
+<div class="container my-4">
     <h2 class="mb-4">Crear Tarea</h2>
 
-    <form method="post" action="<?= base_url('tareas/guardar') ?>" class="bg-light p-4 rounded shadow-sm">
+    <form method="post" action="<?= base_url('tareas/guardar') ?>" class="bg-light p-4 rounded" id="formcm">
         <div class="mb-3">
             <label for="asunto" class="form-label">Asunto:</label>
             <input id="asunto" type="text" name="asunto" class="form-control" required>
@@ -32,7 +32,7 @@
             <input id="color" class="form-control" type="color" name="color">
         </div>
         <div class="d-flex justify-content-between">
-            <a href="<?= base_url('tareas/listar') ?>" class="btn btn-secondary">Volver</a>    
+            <a href="<?= base_url('tareas/listar') ?>" class="btn btn-secondary">Volver a tareas</a>    
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
     </form>
