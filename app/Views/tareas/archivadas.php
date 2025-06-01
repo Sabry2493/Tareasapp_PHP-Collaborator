@@ -1,5 +1,5 @@
 <?= view('partials/header') ?>
-<div class="container my-4">
+<div class="container my-4" style="min-height: 80vh;">
     <h2 class="mb-4">Tareas Archivadas</h2>
 
     <!--bloque para mostrar el mensaje que guardo con el with(se usa principalmente para enviar datos simples al redireccionar,como texto plano para mostrar en vistas)-->
@@ -40,7 +40,7 @@
                                 </form>
 
                                 <!-- Eliminar -->
-                                <form action="<?= base_url('tareas/eliminarArchivada'. $tarea->id) ?>" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar esta tarea archivada?');">
+                                <form action="<?= base_url('tareas/eliminarArchivada/'. $tarea->id) ?>" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar esta tarea archivada?');">
                                     <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                 </form>
                             </td>

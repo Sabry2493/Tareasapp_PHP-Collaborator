@@ -23,6 +23,7 @@ class ColaboradorController extends BaseController
     {
         $email = $this->request->getPost('email_colaborador');
         $password = $this->request->getPost('password');
+        
 
         $model = new ColaboradorRegistroModel();
         $colaborador = $model->where('email_colaborador', $email)->first();
@@ -42,7 +43,8 @@ class ColaboradorController extends BaseController
             'logueado' => true,
             'rol' => 'colaborador',
             'id_colaborador' => $colaborador['id'],
-            'email_colaborador' => $colaborador['email_colaborador']
+            'email_colaborador' => $colaborador['email_colaborador'],
+            'nombre_colaborador' => $colaborador['nombre_colaborador']
         ]);
 
         return redirect()->to('/colaboradores/dashboard'); // creamos esta vista luego

@@ -12,11 +12,17 @@
 
         <div class="mb-3">
             <label for="estado" class="form-label">Estado:</label>
-            <select id="estado" class="form-select" name="estado">
+            <!-- <select id="estado" class="form-select" name="estado" readonly>
             
                 <option value="En Proceso" <?= $subtarea['estado'] === 'En Proceso' ? 'selected' : '' ?>>En Proceso</option>
                 <option value="Completada" <?= $subtarea['estado'] === 'Completada' ? 'selected' : '' ?>>Completada</option>
-            </select>
+            </select> -->
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="fas fa-lock"></i> <!-- ícono de candado -->
+                </span>
+                <input type="text" class="form-control" id="estado" name="estado" value="<?= $subtarea['estado'] ?>" readonly>
+            </div>
         </div>
 
         <div class="mb-3">

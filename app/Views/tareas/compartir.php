@@ -5,7 +5,7 @@
     <h3 class="mt-4">Asignar subtarea a colaborador</h3>
 
 
-    <form method="post" action="<?= base_url('tareas/asignar_subtarea/' . $id_tarea) ?>" class="row g-3">
+    <form method="post" action="<?= base_url('tareas/asignar_subtarea/' . $id_tarea) ?>"  class="row g-3">
         <div class="col-md-6">
             <label for="email_colaborador" class="form-label">Colaborador:</label>
             <select name="email_colaborador" id="email_colaborador" class="form-select" required>
@@ -52,6 +52,7 @@
                     <th>Subtarea</th>
                     <th>Estado</th>
                     <th>Modificar Estado</th>
+                    <th>Accion </th>
                 </tr>
             </thead>
             <tbody>
@@ -71,7 +72,7 @@
                                     <button type="submit" class="btn btn-sm btn-outline-primary" >Cambiar</button>
                                 </form>
                             <?php else: ?>
-                                <em class="text-muted">No autorizado</em>
+                                <em class="text-muted">No autorizado,solo el colaborador</em>
                             <?php endif; ?>
                         </td>
                         <td>

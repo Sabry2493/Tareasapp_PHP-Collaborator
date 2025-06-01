@@ -402,27 +402,6 @@ class TareaController extends Controller
             $tarea['estado'] = 'Definida';
 
             $db->table('tareas')->insert($tarea);
-            /* //bloque
-            $id_tarea_restaurada = $db->insertID();
-            // Obtener todas las subtareas de la tarea archivada
-            $subtareas = $db->table('subtareas')
-                            ->where('id_tarea', $id)
-                            ->get()
-                            ->getResult();
-
-            foreach ($subtareas as $s) {
-                // Restaurar subtarea: cambiar estado a 'Pendiente' y liberar colaborador si tenía uno
-                $db->table('subtareas')->where('id', $s->id)->update([
-                    'estado' => 'Pendiente',
-                    'id_tarea' => $id_tarea_restaurada
-                ]);
-
-                if ($s->id_responsable) {
-                    $db->table('altas_colaboradores')->where('id', $s->id_responsable)->update([
-                        'estado' => 'disponible'
-                    ]);
-                }
-            } */
 
             //Eliminar tarea archivada
             $db->table('archivadas')->where('id', $id)->delete();

@@ -152,7 +152,45 @@ class SubtareaController extends Controller
 
         if ($subtarea) {
             $idTarea = $subtarea['id_tarea'];
+            // 1. Eliminar la subtarea
             $model->delete($id);
+
+           // 2. Reanalizar estado de la tarea
+            $db = \Config\Database::connect();
+            $subtareasRestantes = $db->table('subtareas')
+                ->where('id_tarea', $idTarea)
+                ->get()
+                ->getResult();
+
+            $todasCompletadas = true;
+
+            foreach ($subtareasRestantes as $s) {
+                if ($s->estado !== 'Completada') {
+                    $todasCompletadas = false;
+                    break;
+                }
+            }
+
+            $nuevoEstadoTarea = $todasCompletadas && count($subtareasRestantes) > 0? 'Completada': 'En proceso';
+
+            // 3. Actualizar estado de la tarea
+            $db->table('tareas')
+                ->where('id', $idTarea)
+                ->update(['estado' => $nuevoEstadoTarea]);
+
+            // 4. Si está completada, mover a archivadas
+            if ($nuevoEstadoTarea === 'Completada') {
+                $tarea = $db->table('tareas')->where('id', $idTarea)->get()->getRowArray();
+
+                if ($tarea) {
+                    unset($tarea['id']);
+                    $tarea['archivada'] = 1;
+
+                    $db->table('archivadas')->insert($tarea);
+                    $db->table('tareas')->where('id', $idTarea)->delete();
+                }
+            }
+
             return redirect()->to('/subtareas/listar/' . $idTarea);
         }
 

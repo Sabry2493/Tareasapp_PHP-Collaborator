@@ -11,7 +11,7 @@
 </footer>
 
 <!-- Bootstrap JS (para funcionalidades como modales) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!--MODAL EXITO-->
 <?php if (session()->getFlashdata('modal_msg')): 
     $msg = session()->getFlashdata('modal_msg');
