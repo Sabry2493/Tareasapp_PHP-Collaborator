@@ -37,19 +37,87 @@ class TareaController extends Controller
         if (!session()->get('logueado')) {
             return redirect()->to('/usuarios/login');
         }
+
         $validation = \Config\Services::validation();
 
         $rules = [
-            'asunto' => 'required|min_length[3]',
-            'prioridad' => 'required|in_list[Baja,Normal,Alta]',
-            'fecha_vencimiento' => 'required|valid_date',
+            'asunto' => [
+            'label' => 'Asunto',
+            'rules' => 'required|min_length[3]',
+            'errors' => [
+                'required' => 'El {field} es obligatorio.',
+                'min_length' => 'El {field} debe tener al menos 3 caracteres.',
+                ]
+            ],
+            'descripcion' => [
+            'label' => 'Descripcion',
+            'rules' => 'required|min_length[10]',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'min_length' => 'La {field} debe tener al menos 10 caracteres.',
+                ]
+            ],
+            'prioridad' => [
+            'label' => 'Prioridad',
+            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'errors' => [
+                'required' => 'El {field} es obligatorio.',
+                'in_list' => 'La {field} debe ser baja,normal o alta.',
+                ]
+            ],
+            'fecha_vencimiento' => [
+            'label' => 'Fecha vencimiento',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'valid_date' => 'La {field} debe ser valida.',
+                ]
+            ],
+            'fecha_recordatorio' => [
+            'label' => 'Fecha recordatorio',
+            'rules' => 'permit_empty|valid_date',
+            'errors' => [
+                'valid_date' => 'La {field} debe ser valida.',
+                ]
+            ],
+            'color' => [
+            'label' => 'Color',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'El {field} es obligatorio.',
+                ]
+            ],
+            
         ];
 
-        if (!$this->validate($rules)) {
-            return view('/tareas/crear', [
-                'validation' => $this->validator
-            ]);
-        }
+            $validation->setRules($rules);
+
+            $fechaHoy = date('Y-m-d');
+            $fechaVencimiento = $this->request->getPost('fecha_vencimiento');
+            $fechaRecordatorio = $this->request->getPost('fecha_recordatorio');
+            $color = strtolower($this->request->getPost('color'));
+
+            if (!$validation->withRequest($this->request)->run()) {
+                return view('tareas/crear', ['validation' => $validation]);
+            }
+
+            // Validaciones adicionales personalizadas
+            if ($fechaVencimiento < $fechaHoy) {
+                $validation->setError('fecha_vencimiento', 'La fecha de vencimiento no puede ser anterior a hoy.');
+            }
+
+            if (!empty($fechaRecordatorio) && $fechaRecordatorio > $fechaVencimiento) {
+                $validation->setError('fecha_recordatorio', 'La fecha de recordatorio no puede ser posterior a la fecha de vencimiento.');
+            }
+
+            if ($color === '#ffffff' || $color === '#000000') {
+                $validation->setError('color', 'No se permite el color blanco ni negro.');
+            }
+
+            // Si hay errores personalizados, reenviamos la vista
+            if ($validation->getErrors()) {
+                return view('tareas/crear', ['validation' => $validation]);
+            }
 
         $model = new TareaModel();
         $model->save([
@@ -87,6 +155,88 @@ class TareaController extends Controller
         if (!session()->get('logueado')) {
             return redirect()->to('/usuarios/login');
         }
+
+        $validation = \Config\Services::validation();
+
+        $rules = [
+            'asunto' => [
+            'label' => 'Asunto',
+            'rules' => 'required|min_length[3]',
+            'errors' => [
+                'required' => 'El {field} es obligatorio.',
+                'min_length' => 'El {field} debe tener al menos 3 caracteres.',
+                ]
+            ],
+            'descripcion' => [
+            'label' => 'Descripcion',
+            'rules' => 'required|min_length[10]',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'min_length' => 'La {field} debe tener al menos 10 caracteres.',
+                ]
+            ],
+            'prioridad' => [
+            'label' => 'Prioridad',
+            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'errors' => [
+                'required' => 'El {field} es obligatorio.',
+                'in_list' => 'La {field} debe ser baja,normal o alta.',
+                ]
+            ],
+            'fecha_vencimiento' => [
+            'label' => 'Fecha vencimiento',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'valid_date' => 'La {field} debe ser valida.',
+                ]
+            ],
+            'fecha_recordatorio' => [
+            'label' => 'Fecha recordatorio',
+            'rules' => 'permit_empty|valid_date',
+            'errors' => [
+                'valid_date' => 'La {field} debe ser valida.',
+                ]
+            ],
+            'color' => [
+            'label' => 'Color',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'El {field} es obligatorio.',
+                ]
+            ],
+            
+        ];
+
+            $validation->setRules($rules);
+
+            $fechaHoy = date('Y-m-d');
+            $fechaVencimiento = $this->request->getPost('fecha_vencimiento');
+            $fechaRecordatorio = $this->request->getPost('fecha_recordatorio');
+            $color = strtolower($this->request->getPost('color'));
+
+            if (!$validation->withRequest($this->request)->run()) {
+                return view('tareas/crear', ['validation' => $validation]);
+            }
+
+            // Validaciones adicionales personalizadas
+            if ($fechaVencimiento < $fechaHoy) {
+                $validation->setError('fecha_vencimiento', 'La fecha de vencimiento no puede ser anterior a hoy.');
+            }
+
+            if (!empty($fechaRecordatorio) && $fechaRecordatorio > $fechaVencimiento) {
+                $validation->setError('fecha_recordatorio', 'La fecha de recordatorio no puede ser posterior a la fecha de vencimiento.');
+            }
+
+            if ($color === '#ffffff' || $color === '#000000') {
+                $validation->setError('color', 'No se permite el color blanco ni negro.');
+            }
+
+            // Si hay errores personalizados, reenviamos la vista
+            if ($validation->getErrors()) {
+                return view('tareas/crear', ['validation' => $validation]);
+            }
+
         $model = new TareaModel();
         $model->update($id, [
             'asunto' => $this->request->getPost('asunto'),

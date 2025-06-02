@@ -38,9 +38,66 @@ class SubtareaController extends Controller
     {
         if (!session()->get('logueado')) {
             return redirect()->to('/usuarios/login');
-        }        
+        }    
+        
+        $validation = \Config\Services::validation();
+
+        $rules = [
+            'descripcion' => [
+            'label' => 'Descripcion',
+            'rules' => 'required|min_length[10]',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'min_length' => 'La {field} debe tener al menos 10 caracteres.',
+                ]
+            ],
+            'prioridad' => [
+            'label' => 'Prioridad',
+            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'errors' => [
+                'required' => 'El {field} es obligatorio.',
+                'in_list' => 'La {field} debe ser baja,normal o alta.',
+                ]
+            ],
+            'fecha_vencimiento' => [
+            'label' => 'Fecha vencimiento',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'valid_date' => 'La {field} debe ser valida.',
+                ]
+            ],
+            'comentario' => [
+            'label' => 'Comentario',
+            'rules' => 'permit_empty|min_length[10]',
+            'errors' => [
+                'valid_date' => 'El {field} debe tener minimo 10 caracteres.',
+                ]
+            ],
+            
+        ];
 
         $idTarea = $this->request->getPost('id_tarea');
+        $validation->setRules($rules);
+
+        $fechaHoy = date('Y-m-d');
+        $fechaVencimiento = $this->request->getPost('fecha_vencimiento');
+           
+        $valid = $validation->withRequest($this->request)->run();
+
+        // Validaciones personalizadas
+        if ($fechaVencimiento < $fechaHoy) {
+            $validation->setError('fecha_vencimiento', 'La fecha de vencimiento no puede ser anterior a hoy.');
+            $valid = false;
+        }
+
+        if (!$valid) {
+            return view('subtareas/crear', [
+                'validation' => $validation,
+                'id_tarea' => $idTarea
+            ]);
+        }
+
 
         $model = new SubtareaModel();
         $model->save([
@@ -83,6 +140,65 @@ class SubtareaController extends Controller
         if (!session()->get('logueado')) {
             return redirect()->to('/usuarios/login');
         }
+
+        $validation = \Config\Services::validation();
+
+        $rules = [
+            'descripcion' => [
+            'label' => 'Descripcion',
+            'rules' => 'required|min_length[10]',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'min_length' => 'La {field} debe tener al menos 10 caracteres.',
+                ]
+            ],
+            'prioridad' => [
+            'label' => 'Prioridad',
+            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'in_list' => 'La {field} debe ser baja,normal o alta.',
+                ]
+            ],
+            'fecha_vencimiento' => [
+            'label' => 'Fecha vencimiento',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'La {field} es obligatoria.',
+                'valid_date' => 'La {field} debe ser valida.',
+                ]
+            ],
+            'comentario' => [
+            'label' => 'Comentario',
+            'rules' => 'permit_empty|min_length[10]',
+            'errors' => [
+                'valid_date' => 'El {field} debe tener minimo 10 caracteres.',
+                ]
+            ],
+            
+        ];
+
+        $validation->setRules($rules);
+
+        $fechaHoy = date('Y-m-d');
+        $fechaVencimiento = $this->request->getPost('fecha_vencimiento'); 
+
+        $valid = $validation->withRequest($this->request)->run();
+
+        if ($fechaVencimiento < $fechaHoy) {
+            $validation->setError('fecha_vencimiento', 'La fecha de vencimiento no puede ser anterior a hoy.');
+            $valid = false;
+        }
+
+        if (!$valid) {
+            $subtarea = (new \App\Models\SubtareaModel())->find($id);
+            return view('subtareas/editar', [
+                'validation' => $validation,
+                'subtarea' => $subtarea
+            ]);
+        }
+
+
         $model = new SubtareaModel();
 
         $model->update($id, [
