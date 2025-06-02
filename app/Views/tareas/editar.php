@@ -1,6 +1,11 @@
 <?= view('partials/header') ?>
 <div class="container my-4">
     <h2 class="mb-4">Editar Tarea</h2>
+    <?php if (!empty($validation)) : ?>
+        <div style="color:red;">
+            <?= $validation->listErrors(); ?>
+        </div>
+    <?php endif; ?>
 
     <form method="post" action="<?= base_url('tareas/actualizar/' . $tarea['id']) ?>" id="formcm" class="bg-light p-4 rounded">
         <div class="mb-3">

@@ -2,6 +2,12 @@
 <div class="container my-4">
     <h2 class="mb-4">Editar Subtarea</h2>
 
+    <?php if (!empty($validation)) : ?>
+        <div style="color:red;">
+            <?= $validation->listErrors(); ?>
+        </div>
+    <?php endif; ?>
+
     <form method="post" action="<?= base_url('subtareas/actualizar/' . $subtarea['id']) ?>" id="formcm" class="bg-light p-4 rounded">
         <input type="hidden" name="id_tarea" value="<?= esc($subtarea['id_tarea']) ?>">
         

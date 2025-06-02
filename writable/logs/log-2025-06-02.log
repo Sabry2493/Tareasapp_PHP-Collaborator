@@ -4,3 +4,132 @@ DEBUG - 2025-06-02 00:15:42 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-06-02 00:15:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-06-02 00:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-06-02 00:29:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:00:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:00:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:00:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:17:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:18:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:18:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-02 00:18:24 --> ErrorException: Undefined variable $tarea
+[Method: POST, Route: tareas/actualizar/21]
+in APPPATH\Views\tareas\editar.php on line 5.
+ 1 APPPATH\Views\tareas\editar.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tarea', 'C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('tareas/editar', [], true)
+ 5 APPPATH\Controllers\TareaController.php(218): view('tareas/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TareaController->actualizar('21')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TareaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-02 00:20:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-02 00:20:05 --> ErrorException: Undefined variable $tarea
+[Method: POST, Route: tareas/actualizar/21]
+in APPPATH\Views\tareas\editar.php on line 5.
+ 1 APPPATH\Views\tareas\editar.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tarea', 'C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('tareas/editar', [], true)
+ 5 APPPATH\Controllers\TareaController.php(218): view('tareas/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TareaController->actualizar('21')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TareaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-02 00:21:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-02 00:21:43 --> ErrorException: Undefined variable $tarea
+[Method: POST, Route: tareas/actualizar/21]
+in APPPATH\Views\tareas\editar.php on line 5.
+ 1 APPPATH\Views\tareas\editar.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tarea', 'C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('tareas/editar', [], true)
+ 5 APPPATH\Controllers\TareaController.php(218): view('tareas/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TareaController->actualizar('21')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TareaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-02 00:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-02 00:26:24 --> ErrorException: Undefined variable $tarea
+[Method: POST, Route: tareas/actualizar/21]
+in APPPATH\Views\tareas\editar.php on line 5.
+ 1 APPPATH\Views\tareas\editar.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tarea', 'C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('tareas/editar', [], true)
+ 5 APPPATH\Controllers\TareaController.php(219): view('tareas/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TareaController->actualizar('21')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TareaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-02 00:26:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:26:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-02 00:26:34 --> ErrorException: Undefined variable $tarea
+[Method: POST, Route: tareas/actualizar/21]
+in APPPATH\Views\tareas\editar.php on line 5.
+ 1 APPPATH\Views\tareas\editar.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tarea', 'C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('tareas/editar', [], true)
+ 5 APPPATH\Controllers\TareaController.php(219): view('tareas/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TareaController->actualizar('21')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TareaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-02 00:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-02 00:26:48 --> ErrorException: Undefined variable $tarea
+[Method: POST, Route: tareas/actualizar/21]
+in APPPATH\Views\tareas\editar.php on line 5.
+ 1 APPPATH\Views\tareas\editar.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tarea', 'C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('tareas/editar', [], true)
+ 5 APPPATH\Controllers\TareaController.php(219): view('tareas/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TareaController->actualizar('21')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TareaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-02 00:28:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-02 00:28:13 --> ErrorException: Undefined variable $tarea
+[Method: POST, Route: tareas/actualizar/21]
+in APPPATH\Views\tareas\editar.php on line 5.
+ 1 APPPATH\Views\tareas\editar.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tarea', 'C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\CI4_tareasapp\\app\\Views\\tareas\\editar.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('tareas/editar', [], true)
+ 5 APPPATH\Controllers\TareaController.php(219): view('tareas/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TareaController->actualizar('21')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TareaController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-06-02 00:30:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:31:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:31:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:31:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:31:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:32:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:35:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:35:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:36:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:37:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:37:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-02 00:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -11,11 +11,11 @@
     <form method="post" action="<?= base_url('tareas/guardar') ?>" class="bg-light p-4 rounded" id="formcm">
         <div class="mb-3">
             <label for="asunto" class="form-label">Asunto:</label>
-            <input id="asunto" type="text" name="asunto" class="form-control" >
+            <input id="asunto" type="text" name="asunto" class="form-control" minlength="3" >
         </div>
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción:</label>
-            <textarea id="descripcion" class="form-control" name="descripcion" rows="4"></textarea>
+            <textarea id="descripcion" class="form-control" name="descripcion" rows="4" minlength="10"></textarea>
         </div>
         <div class="mb-3">
             <label for="prioridad" class="form-label">Prioridad:</label>

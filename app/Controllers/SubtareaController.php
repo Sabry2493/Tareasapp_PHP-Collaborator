@@ -53,10 +53,9 @@ class SubtareaController extends Controller
             ],
             'prioridad' => [
             'label' => 'Prioridad',
-            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'rules' => 'required',
             'errors' => [
-                'required' => 'El {field} es obligatorio.',
-                'in_list' => 'La {field} debe ser baja,normal o alta.',
+                'required' => 'La {field} es obligatoria.',
                 ]
             ],
             'fecha_vencimiento' => [
@@ -71,7 +70,7 @@ class SubtareaController extends Controller
             'label' => 'Comentario',
             'rules' => 'permit_empty|min_length[10]',
             'errors' => [
-                'valid_date' => 'El {field} debe tener minimo 10 caracteres.',
+                'min_length' => 'El {field} debe tener minimo 10 caracteres.',
                 ]
             ],
             
@@ -94,7 +93,7 @@ class SubtareaController extends Controller
         if (!$valid) {
             return view('subtareas/crear', [
                 'validation' => $validation,
-                'id_tarea' => $idTarea
+                'id_tarea' => $this->request->getPost('id_tarea')
             ]);
         }
 
@@ -140,7 +139,7 @@ class SubtareaController extends Controller
         if (!session()->get('logueado')) {
             return redirect()->to('/usuarios/login');
         }
-
+        $model = new SubtareaModel();
         $validation = \Config\Services::validation();
 
         $rules = [
@@ -154,10 +153,9 @@ class SubtareaController extends Controller
             ],
             'prioridad' => [
             'label' => 'Prioridad',
-            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'rules' => 'required',
             'errors' => [
                 'required' => 'La {field} es obligatoria.',
-                'in_list' => 'La {field} debe ser baja,normal o alta.',
                 ]
             ],
             'fecha_vencimiento' => [
@@ -172,7 +170,7 @@ class SubtareaController extends Controller
             'label' => 'Comentario',
             'rules' => 'permit_empty|min_length[10]',
             'errors' => [
-                'valid_date' => 'El {field} debe tener minimo 10 caracteres.',
+                'min_length' => 'El {field} debe tener minimo 10 caracteres.',
                 ]
             ],
             
@@ -191,15 +189,13 @@ class SubtareaController extends Controller
         }
 
         if (!$valid) {
-            $subtarea = (new \App\Models\SubtareaModel())->find($id);
+            $subtarea = (new SubtareaModel())->find($id);
             return view('subtareas/editar', [
                 'validation' => $validation,
-                'subtarea' => $subtarea
+                'subtarea' => $model->find($id)
             ]);
         }
-
-
-        $model = new SubtareaModel();
+        
 
         $model->update($id, [
             'descripcion' => $this->request->getPost('descripcion'),

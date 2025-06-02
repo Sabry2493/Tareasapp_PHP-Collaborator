@@ -13,7 +13,7 @@
         <input type="hidden" name="id_tarea" value="<?= esc($id_tarea) ?>">
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción:</label>
-            <textarea id="descripcion" class="form-control" name="descripcion" rows="4"></textarea>
+            <textarea id="descripcion" class="form-control" name="descripcion" rows="4" minlength="10"></textarea>
         </div>
     
         <!-- <label>Estado:</label><br>
@@ -36,7 +36,7 @@
         </div>
         <div class="mb-3">
             <label id="comentario" class="form-control">Comentario:</label>
-            <textarea id="comentario" class="form-control" rows="4" name="comentario"></textarea>
+            <textarea id="comentario" class="form-control" rows="4" name="comentario" minlength="10"></textarea>
         </div>
         <!-- <label>ID Responsable:</label><br>
         <input type="number" name="id_responsable" min="1"><br><br> -->

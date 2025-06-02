@@ -59,10 +59,9 @@ class TareaController extends Controller
             ],
             'prioridad' => [
             'label' => 'Prioridad',
-            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'rules' => 'required',
             'errors' => [
-                'required' => 'El {field} es obligatorio.',
-                'in_list' => 'La {field} debe ser baja,normal o alta.',
+                'required' => 'La {field} es obligatoria.',
                 ]
             ],
             'fecha_vencimiento' => [
@@ -155,6 +154,8 @@ class TareaController extends Controller
         if (!session()->get('logueado')) {
             return redirect()->to('/usuarios/login');
         }
+         $model = new TareaModel();
+         $tarea = $model->find($id);
 
         $validation = \Config\Services::validation();
 
@@ -177,10 +178,9 @@ class TareaController extends Controller
             ],
             'prioridad' => [
             'label' => 'Prioridad',
-            'rules' => 'required|in_list[Baja,Normal,Alta]',
+            'rules' => 'required',
             'errors' => [
-                'required' => 'El {field} es obligatorio.',
-                'in_list' => 'La {field} debe ser baja,normal o alta.',
+                'required' => 'La {field} es obligatoria.',
                 ]
             ],
             'fecha_vencimiento' => [
@@ -214,9 +214,12 @@ class TareaController extends Controller
             $fechaVencimiento = $this->request->getPost('fecha_vencimiento');
             $fechaRecordatorio = $this->request->getPost('fecha_recordatorio');
             $color = strtolower($this->request->getPost('color'));
-
+        // Validación principal
             if (!$validation->withRequest($this->request)->run()) {
-                return view('tareas/crear', ['validation' => $validation]);
+                return view('tareas/editar', [
+                    'validation' => $validation,
+                    'tarea' => $tarea // 👈 ESTA línea es la clave
+                ]);
             }
 
             // Validaciones adicionales personalizadas
@@ -234,10 +237,9 @@ class TareaController extends Controller
 
             // Si hay errores personalizados, reenviamos la vista
             if ($validation->getErrors()) {
-                return view('tareas/crear', ['validation' => $validation]);
+                return view('tareas/editar', ['validation' => $validation, 'tarea' => $tarea]);
             }
 
-        $model = new TareaModel();
         $model->update($id, [
             'asunto' => $this->request->getPost('asunto'),
             'descripcion' => $this->request->getPost('descripcion'),
