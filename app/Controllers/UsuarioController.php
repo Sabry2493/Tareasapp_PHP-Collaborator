@@ -112,20 +112,42 @@ class UsuarioController extends BaseController
                 'logueado' => true,
             ]);
 
-             // Verificamos si tiene tareas que vencen en los próximos 2 días
+            //Nuevo bloque: Verificamos si hoy coincide con la fecha de recordatorio de alguna tarea
                 $db = \Config\Database::connect();
                 $builder = $db->table('tareas');
+                $builder->select('asunto, fecha_vencimiento');
                 $builder->where('id_usuario', $usuario['id']);
-                $builder->where('estado !=', 'Completada'); // solo tareas activas
-                $builder->where('fecha_vencimiento <=', date('Y-m-d', strtotime('+2 days')));
-                $builder->where('fecha_vencimiento >=', date('Y-m-d')); // no vencidas aún
+                $builder->where('estado !=', 'Completada');
+                $builder->where('fecha_recordatorio', date('Y-m-d'));
 
-                $tareasProximas = $builder->get()->getResult();
+                $tareasRecordatorio = $builder->get()->getResultArray();
 
-                if (!empty($tareasProximas)) {
-                    $session->set('mostrar_modal_vencimiento', true);
+                if (!empty($tareasRecordatorio)) {
+                    $mensaje = "<p>Estas son las tareas que tienen recordatorio para hoy:</p><ul>";
+                    foreach ($tareasRecordatorio as $tarea) {
+                        $diasRestantes = (new \DateTime($tarea['fecha_vencimiento']))->diff(new \DateTime())->days;
+                        $mensaje .= "<li><strong>" . esc($tarea['asunto']) . "</strong> - Vence el <strong>" . esc($tarea['fecha_vencimiento']) . "</strong> (quedan <strong>" . $diasRestantes . "</strong> días)</li>";
+                    }
+                    $mensaje .= "</ul>";
+
+                    $session->setFlashdata('modal_msg', [
+                        'titulo' => 'Recordatorio de tareas',
+                        'mensaje' => $mensaje
+                    ]);
+                    // 👇 GUARDAR PERSISTENTEMENTE PARA LA CAMPANA
+                     $session->set('modal_msg_persistente', [
+                        'titulo' => 'Recordatorio de tareas',
+                        'mensaje' => $mensaje
+                    ]); 
+                    // Usamos para mostrar el badge(campana notificacion)
+                        $session->set('tiene_recordatorios', true);
+                } else {
+                    //Cuando no hay recordatorios, los elimino
+                        $session->remove('tiene_recordatorios');
+                        $session->remove('modal_msg_persistente');
                 }
-
+                
+                //fin nuevo bloque
             return redirect()->to('/tareas/listar');
         
     }

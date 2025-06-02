@@ -12,12 +12,11 @@
 
 <!-- Bootstrap JS (para funcionalidades como modales) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!--MODAL EXITO-->
+
+<!-- Modal Bootstrap para creacion/modificacion -->
 <?php if (session()->getFlashdata('modal_msg')): 
     $msg = session()->getFlashdata('modal_msg');
 ?> 
-
-<!-- Modal Bootstrap reutilizable -->
 <div class="modal fade" id="modalGeneral" tabindex="-1" aria-labelledby="modalGeneralLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -45,8 +44,30 @@
         modal.show();
     });
 </script>
-
 <?php endif; ?>
-<!--Fin del modal-->
+<!--Fin del modal creacion/modificacion-->
+
+<!-- Modal para recordatorios (campana) -->
+<?php if (session()->get('modal_msg_persistente')): 
+    $msg = session()->get('modal_msg_persistente');
+?>
+<div class="modal fade" id="modalRecordatorio" tabindex="-1" aria-labelledby="modalRecordatorioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRecordatorioLabel"><?= esc($msg['titulo'] ?? 'Recordatorio') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p><?= $msg['mensaje'] ?></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+<!--Fin del modal recordatorio-->
 </body>
 </html>

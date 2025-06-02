@@ -87,6 +87,18 @@
         <div class="ms-auto d-flex align-items-center gap-3">
             <?php if (session()->get('id')): ?> 
                 <span class="fw-bold text-dark">Bienvenido, creador <?= esc(session()->get('nombre_usuario')) ?></span>
+                <!--nuevo bloque-->
+                <?php if (session()->get('tiene_recordatorios')): ?>
+                <!-- Ícono de campana con badge --> 
+                 <button type="button" class="btn position-relative" style="font-size: 1.5rem;" data-bs-toggle="modal" data-bs-target="#modalRecordatorio" aria-label="Notificaciones">
+                        <!-- <i class="bi bi-bell-fill fs-4"></i> -->
+                        <i class="fas fa-bell fs-4"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">
+                            !
+                        </span>      
+                </button>
+                <?php endif; ?>
+                <!-- fin nuevo bloque-->
                 <a href="<?= base_url('/usuarios/logout') ?>" class="btn btn-sm btn-logout">Cerrar sesión</a>
             <?php elseif (session()->get('id_colaborador')): ?>
                 <span class="fw-bold text-dark">Bienvenido, colaborador <?= esc(session()->get('nombre_colaborador')) ?></span>

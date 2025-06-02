@@ -1,25 +1,5 @@
 <?= view('partials/header') ?>
 
-<?php if (session()->get('mostrar_modal_vencimiento')): ?>
-    <!-- Modal simple con HTML y JS -->
-    <div id="modalVencimiento" style="position: fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center;">
-        <div style="background-color: white; padding: 20px; border-radius: 10px; width: 300px; text-align: center;">
-            <h3>¡Atención!</h3>
-            <p>Tenés tareas que vencen en los próximos 2 días. Verificalas en la lista.</p>
-            <button onclick="cerrarModal()">Aceptar</button>
-        </div>
-    </div>
-
-    <script>
-        function cerrarModal() {
-            document.getElementById('modalVencimiento').style.display = 'none';
-
-            // Llamada para eliminar la variable de sesión (opcional pero recomendado)
-            fetch("<?= base_url('usuarios/ocultar-modal') ?>");
-        }
-    </script>
-<?php endif; ?>
-
 <div class="container my-4">
     <h2 class="text-center mb-4">Lista de Tareas</h2>
     <div class="d-flex justify-content-between mb-3">
