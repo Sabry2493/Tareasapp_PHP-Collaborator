@@ -250,6 +250,21 @@ class TareaController extends Controller
             'color' => $this->request->getPost('color'),
         ]);
 
+        // Si la tarea fue marcada como completada, moverla a archivadas
+        if ($this->request->getPost('estado') === 'Completada') {
+            $db = \Config\Database::connect();
+            $tareaData = $db->table('tareas')->where('id', $id)->get()->getRowArray();
+
+            if ($tareaData) {
+                unset($tareaData['id']);
+                $tareaData['archivada'] = 1;
+
+                $db->table('archivadas')->insert($tareaData);
+                $db->table('tareas')->where('id', $id)->delete();
+            }
+        }
+
+
         // ✅ Flashdata para mostrar en modal
         session()->setFlashdata('modal_msg', [
             'titulo' => 'Modificación exitosa de la tarea',
